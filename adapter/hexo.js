@@ -12,7 +12,7 @@ const entities = new Entities();
 const template = `
 ---
 <% for (const key in props) {%>
-<% if (key=='tags'||key=='categories'){%>
+<% if (key=='categories'){%>
 <%= key %>: [<%= props[key] %>]
 <% } else {%>
 <%= key %>: <%= props[key] %>
