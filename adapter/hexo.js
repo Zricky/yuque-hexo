@@ -7,16 +7,20 @@ const { formatDate, formatRaw, formatTags } = require('../util');
 
 const entities = new Entities();
 
-// 文章模板
+// 文章模板 修复标签和分类解析 
+//update ： 20190523
 const template = `
 ---
 <% for (const key in props) {%>
+<% if (key=='tags'||key=='categories'){%>
+<%= key %>: [<%= props[key] %>]
+<% } else {%>
 <%= key %>: <%= props[key] %>
+<% } %>
 <% } %>
 ---
 <%- raw %>
 `;
-
 /**
  * front matter 反序列化
  * @description
